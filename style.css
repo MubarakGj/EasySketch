@@ -43,15 +43,9 @@ body{
 div.control{
     display: block;
     min-width: 100%;
-}
-
-input#colorPicker{
-    border: none;
-    border-radius: 100%;
-    overflow: visible;
-    width: 30px;
-    margin: 0;
-    padding: 0;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
 }
 
 #gridContainer > *{
@@ -69,6 +63,10 @@ div.gridCell.clicked{
     background-color: var(--filler-color);
 }
 
+div.gridCell{
+    background-color: whitesmoke;
+}
+
 #eraser{
     font-family: inherit;
     width: 100px;
@@ -76,5 +74,60 @@ div.gridCell.clicked{
     border-radius: 10px;
     border: 1px solid white;
     font-weight: bold;
-    color: #3882F6;
+    /* color: #3882F6; */
+    color:black;
+    margin-top: 10px;
 }
+
+#draw{
+    font-family: inherit;
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid white;
+    font-weight: bold;
+    /* color: #3882F6; */
+    color:black;
+    margin-top: 10px;
+}
+
+#clear{
+    font-family: inherit;
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid white;
+    font-weight: bold;
+    /* color: #3882F6; */
+    color:black;
+    margin-top: 10px;
+}
+
+#colorPickerContainer{
+    background-color: var(--filler-color);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+
+input#colorPicker{
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    height: 80px;
+    width: 80px;
+    flex: 1;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  input[type='color']::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    box-shadow: var(--filler-color);
+  }

@@ -17,14 +17,23 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
 const gridContainer = document.querySelector("#gridContainer");
 gridContainer.addEventListener('mousedown', () => { ismouseDown = true });
-gridContainer.addEventListener('mouseup', () => { ismouseDown = false });
+gridContainer.addEventListener('mouseup', () => { ismouseDown = false; console.log("mouse up event triggered") });
 
 //Detecting eraser status
 const eraser = document.querySelector("#eraser");
-eraser.addEventListener('click', (e) => {
-    isEraserOn = true;
-    e.target.classList.add("clicked");
-});
+eraser.addEventListener('click', (e) => { isEraserOn = true;  console.log("Eraseron: "+isEraserOn)});
+
+//Detecting eraser status
+const draw = document.querySelector("#draw");
+draw.addEventListener('click', (e) => { isEraserOn = false; });
+
+//Clearing board
+const clear = document.querySelector("#clear");
+clear.addEventListener('click', clearBoard);
+
+//Change background color
+const colorpicker = document.querySelector("#colorPickerContainer");
+colorpicker.addEventListener('click',setFillercolor);
 
 //sets grid size based on the user input
 let gridSize = document.querySelector("#gridSize");
@@ -62,10 +71,10 @@ function fillColor(e) {
     if (ismouseDown && !isEraserOn) {
         e.target.classList.add("clicked");
     }
-    else {
-        if (e.target.classList.contains("clicked")) {
-            e.target.classList.toggle("clicked");
-        }
+    if(ismouseDown && isEraserOn) {
+        // if (e.target.classList.contains("clicked")) {
+            e.target.classList.remove("clicked");
+        // }
     }
 }
 
@@ -74,4 +83,9 @@ function setFillercolor() {
     const color = document.querySelector("colorPicker").value;
     const root = document.querySelector(":root");
     root.style.setProperty("--filler-color", color);
+}
+
+function clearBoard(){
+    const cells = document.querySelectorAll(".clicked");
+    cells.forEach(cell => cell.classList.remove("clicked"));
 }
