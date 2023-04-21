@@ -14,6 +14,11 @@
     <div id="mainContainer">
         <div id="controls">
             <div class="control">
+                <label id="gridSizeLabel" for="gridSize">Grid Size</label>
+                <input id="gridSize" name="gridSize" type="range" min="10" max="100" value="20" step="5">
+                <div id="value">Value: </div>
+            </div>
+            <div class="control">
                 <label>Color Picker</label>
                 <div id="colorPickerContainer">
                     <input type="color" id="colorPicker"></input>
@@ -27,11 +32,6 @@
             </div>
             <div class="control">
                 <button id="draw">Draw</button>
-            </div>
-            <div class="control">
-                <label id="gridSizeLabel" for="gridSize">Grid Size</label>
-                <input id="gridSize" name="gridSize" type="range" min="10" max="100" value="20" step="5">
-                <div id="value">Value: </div>
             </div>
             <div class="control">
                 <button id="eraser">Eraser</button>
