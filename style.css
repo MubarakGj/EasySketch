@@ -28,7 +28,7 @@ body {
     display: grid;
     grid-template-columns: repeat(var(--grid-size), calc(var(--grid-width)/var(--grid-size)));
     grid-template-rows: repeat(var(--grid-size), calc(var(--grid-width)/var(--grid-size)));
-    margin-left: 100px;
+    margin-left: 120px;
 }
 
 #controls {
@@ -47,7 +47,7 @@ div.control {
     min-width: 100%;
     align-items: center;
     justify-content: center;
-    margin-top: 5%;
+    /* margin-top: 2%; */
 
 }
 
@@ -140,4 +140,17 @@ input[type='color']::-webkit-color-swatch {
     height: 80px;
     width: 80px;
     box-shadow: var(--filler-color);
+}
+
+#colorRandomizerContainer {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+img{
+    width: inherit;
+    height: inherit;
+    object-fit: fill;
 }

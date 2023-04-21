@@ -1,5 +1,7 @@
 let ismouseDown = false;
 let isEraserOn = false;
+let isRandomColor = false;
+let color = "black";
 
 //sets grid size value in the css
 function setGridSizeValue() {
@@ -35,7 +37,17 @@ clear.addEventListener('click', clearBoard);
 
 //Change background color
 const colorpicker = document.querySelector("#colorPicker");
-colorpicker.addEventListener('input', setFillercolor);
+colorpicker.addEventListener('input', () => {
+    isRandomColor = false;
+    setFillercolor();
+});
+
+//Sets Random color as true
+const colorRandomizer = document.querySelector("#colorRandomizerContainer");
+colorRandomizer.addEventListener('click', () => {
+    isRandomColor = true;
+    isEraserOn = false;
+});
 
 //sets grid size based on the user input
 let gridSize = document.querySelector("#gridSize");
@@ -60,6 +72,7 @@ function loadGrid() {
         gridContainer.appendChild(gridCell);
         gridCell.addEventListener('mouseover', fillColor);
         gridCell.addEventListener('mousedown', fillColorwhenClicked);
+
     }
 }
 
@@ -71,30 +84,55 @@ function clearGrid() {
 
 //fills the event targeted grid cell with selected color
 function fillColor(e) {
+    if (isRandomColor) {
+        setRandomFillercolor();
+    }
     if (ismouseDown && !isEraserOn) {
-        e.target.classList.add("clicked");
+        e.target.style.backgroundColor = color;
+        // ("background-color", color);
     }
     if (ismouseDown && isEraserOn) {
-        e.target.classList.remove("clicked");
+        // e.target.removeProperty("background-color");
+        e.target.style.backgroundColor = "";
     }
 }
+
 function fillColorwhenClicked(e) {
     if (!isEraserOn) {
-        e.target.classList.add("clicked");
+        e.target.style.backgroundColor = color;
+        // e.target.setProperty("background-color", color);
     }
     if (isEraserOn) {
-        e.target.classList.remove("clicked");
+        e.target.style.backgroundColor = "";
     }
 }
 
 //reads color from colorPicker and sets the background color value for grid cells
 function setFillercolor() {
-    const color = document.querySelector("#colorPicker").value;
+    color = document.querySelector("#colorPicker").value;
     const root = document.querySelector(":root");
     root.style.setProperty("--filler-color", color);
 }
 
+//reads color from colorPicker and sets the background color value for grid cells
+function setRandomFillercolor() {
+    const root = document.querySelector(":root");
+    color = "rgb(" + getRandomNumber() + "," + getRandomNumber() + "," + getRandomNumber() + ")";
+    root.style.setProperty("--filler-color", color);
+    console.log(getComputedStyle(root).getPropertyValue("--filler-color"));
+}
+
+// clears the entire board and sets it up freshly
 function clearBoard() {
-    const cells = document.querySelectorAll(".clicked");
-    cells.forEach(cell => cell.classList.remove("clicked"));
+    // const cells = document.querySelectorAll(".clicked");
+    // cells.forEach(cell => cell.classList.remove("clicked"));
+    clearGrid();
+    loadGrid();
+}
+
+function getRandomNumber() {
+    const maxNum = 255;
+    let value = Math.floor(Math.random() * maxNum);
+    console.log("Random number: " + value);
+    return value;
 }
