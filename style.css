@@ -1,35 +1,37 @@
-:root{
-    --grid-size: 20 ;
+:root {
+    --grid-size: 20;
     --grid-width: 600px;
     --grid-height: 600px;
     --filler-color: black;
 }
 
-body{
+body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-    background-color: darkcyan;
+    /* background-color: #03C988; */
+    background-color: #A0D995;
+    color: #060047;
 }
 
-#mainContainer{
+#mainContainer {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap-reverse;
 }
 
-#gridContainer{
+#gridContainer {
     width: 80%;
     background-color: whitesmoke;
     height: var(--grid-height);
-    max-width:var(--grid-width);
+    max-width: var(--grid-width);
     display: grid;
-    grid-template-columns: repeat(var(--grid-size),calc(var(--grid-width)/var(--grid-size)));
-    grid-template-rows: repeat(var(--grid-size),calc(var(--grid-width)/var(--grid-size)));
+    grid-template-columns: repeat(var(--grid-size), calc(var(--grid-width)/var(--grid-size)));
+    grid-template-rows: repeat(var(--grid-size), calc(var(--grid-width)/var(--grid-size)));
     margin-left: 100px;
 }
 
-#controls{
+#controls {
     display: flex;
     align-content: center;
     justify-content: center;
@@ -40,70 +42,77 @@ body{
     margin-left: 100px;
 }
 
-div.control{
+div.control {
     display: block;
     min-width: 100%;
     align-items: center;
     justify-content: center;
     margin-top: 5%;
+
 }
 
-#gridContainer > *{
+button {
+    /* text-decoration: none; */
+    color: inherit;
+    border: 1px solid white;
+}
+
+#gridContainer>* {
     aspect-ratio: 1 / 1;
     border: 1px solid #d9d9d9;
     display: flex;
 }
 
-label{
+label {
     display: block;
     margin: 10px;
 }
 
-div.gridCell.clicked{
+div.gridCell.clicked {
     background-color: var(--filler-color);
 }
 
-div.gridCell{
+div.gridCell {
     background-color: whitesmoke;
 }
 
-#eraser{
+#eraser {
     font-family: inherit;
     width: 100px;
     height: 35px;
     border-radius: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     font-weight: bold;
     /* color: #3882F6; */
-    color:black;
+    /* color: black; */
     margin-top: 10px;
 }
 
-#draw{
+#draw {
     font-family: inherit;
     width: 100px;
     height: 35px;
     border-radius: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     font-weight: bold;
     /* color: #3882F6; */
-    color:black;
+    /* color: black; */
     margin-top: 10px;
 }
 
-#clear{
+#clear {
     font-family: inherit;
     width: 100px;
     height: 35px;
     border-radius: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     font-weight: bold;
     /* color: #3882F6; */
-    color:black;
+    /* color: black; */
     margin-top: 10px;
 }
 
-#colorPickerContainer{
+#colorPickerContainer {
     background-color: var(--filler-color);
     width: 80px;
     height: 80px;
@@ -112,7 +121,7 @@ div.gridCell{
     margin: auto;
 }
 
-input#colorPicker{
+input#colorPicker {
     border: none;
     margin: 0px;
     padding: 0px;
@@ -123,11 +132,12 @@ input#colorPicker{
 
 input[type='color']::-webkit-color-swatch-wrapper {
     padding: 0;
-  }
-  input[type='color']::-webkit-color-swatch {
+}
+
+input[type='color']::-webkit-color-swatch {
     border: none;
     border-radius: 50%;
     height: 80px;
     width: 80px;
     box-shadow: var(--filler-color);
-  }
+}
