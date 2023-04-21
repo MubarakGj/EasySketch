@@ -17,12 +17,13 @@ window.addEventListener('DOMContentLoaded', (e) => {
 });
 
 const gridContainer = document.querySelector("#gridContainer");
-gridContainer.addEventListener('mousedown', () => { ismouseDown = true; console.log("capturing mouse down action") });
+gridContainer.addEventListener('mousedown', () => { ismouseDown = true });
 gridContainer.addEventListener('mouseup', () => { ismouseDown = false });
+// gridContainer.addEventListener('mouseout', () => { ismouseDown = false });
 
 //Detecting eraser status
 const eraser = document.querySelector("#eraser");
-eraser.addEventListener('click', (e) => { isEraserOn = true; console.log("Eraseron: " + isEraserOn) });
+eraser.addEventListener('click', (e) => { isEraserOn = true });
 
 //Detecting eraser status
 const draw = document.querySelector("#draw");
